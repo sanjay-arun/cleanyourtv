@@ -1,0 +1,38 @@
+# Hisense HiSmartTV A4 (device xiaoyushan, MStar/MediaTek m7322), Android TV 9, firmware PTMR.190127.037. India.
+# Based on examples/hisense-hismarttv-a4 (same model and firmware). Wi-Fi owned by android.uid.system.
+#
+# Apply:   TV_HOST=<tv ip> tools/disable.sh examples/hisense-hismarttv-a4-bedroom/debloat.txt
+# Undo:    TV_HOST=<tv ip> tools/restore.sh examples/hisense-hismarttv-a4-bedroom/debloat.txt
+# Applied group by group with a reboot after each, as the base list advises.
+#
+# Kept by owner's choice: Netflix, Prime Video, RemoteNOW (hisremotenow), USB media player (jamdeo
+# mediacenter), Hisense screensaver (myapplication, set as the screensaver in place of Backdrop),
+# firmware updates (hisense.tv.ota, remoteupgrade), Chromecast, Assistant, YouTube.
+# Keep: com.mediatek.*, com.hisense.tv.hitvinput, com.hisense.kpad, com.mstar.netflixobserver,
+# com.hisense.tv.customerlauncher, com.hisense.uifac, com.hisense.audio_update_service, com.hisense.tv.smartsense.
+# Not installed on this set: com.google.android.apps.nbu.smartconnect.tv.
+# Already disabled on this set: com.google.android.leanbacklauncher, com.seraphic.browser, com.google.android.music.
+
+# Group 1: telemetry
+com.hisense.app.logreport              # Hisense LogReportManagerService
+com.google.android.feedback
+com.google.android.tv.bugreportsender
+
+# Group 2: recommendation rows, retail demo, silent preload installs
+com.google.android.tvrecommendations
+com.google.android.leanbacklauncher.recommendations
+com.google.android.leanbacklauncher    # old launcher, already disabled on this set
+com.hisense.storemode
+fusion.android.tv.demo                 # retail display
+com.mstar.android.tv.disclaimercustomization   # store disclaimer screen
+android.autoinstalls.config.hisense.xiaoyushan
+
+# Group 3: preloaded apps
+com.seraphic.browser                   # Hisense browser, already disabled on this set
+com.google.android.music               # Play Music, discontinued, already disabled on this set
+com.google.android.videos              # Google Play Movies & TV (loses access to purchases in it)
+com.google.android.play.games
+
+# This set only
+com.google.android.backdrop            # Ambient screensaver; Hisense's DayDreamService set as screensaver first
+flar2.homebutton                       # third-party Home button remapper (2020); also an accessibility service
