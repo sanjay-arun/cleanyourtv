@@ -1,0 +1,43 @@
+# Hisense SmartTV 4K FFM (device songshan, board m7632, MediaTek), Android 11 / SDK 30,
+# firmware RTT2.220118.001. India.
+# Based on examples/hisense-smarttv-4k-ffm-android11 (same device and firmware).
+#
+# Apply:   TV_HOST=<tv ip> tools/disable.sh examples/hisense-smarttv-4k-ffm-av-bedroom/debloat.txt
+# Undo:    TV_HOST=<tv ip> tools/restore.sh examples/hisense-smarttv-4k-ffm-av-bedroom/debloat.txt com.google.android.apps.tv.launcherx
+# Wait ~30 s after disabling before a reboot, as on the Hisense A4, so the change is saved.
+#
+# WARNING: never disable com.hisense.tv.smartsense, com.vt.tv.smartsense.ui or com.vt.tv.aiot
+# (Android Recovery on the next boot, per the huangshan FFM list).
+# Kept by owner's choice: all streaming apps, voice assistant (katniss, tv.assistant, hisense.alexa),
+# casting and mirroring, firmware updaters, TTS, TalkBack.
+# Nothing was disabled at the factory on this set, unlike the base list's set: the Google extras below
+# were all enabled.
+
+# Retail / store demo
+com.hisense.storemode
+fusion.android.tv.demo
+
+# First-time experience (setup already complete)
+com.hisense.fte
+
+# Google partner auto-install stub (silent partner app installs)
+android.autoinstalls.config.google.gtvpai
+
+# On-screen disclaimer app
+com.mstar.android.tv.disclaimercustomization
+
+# Telemetry and preloaded apps (factory-disabled on the base list's set, enabled here)
+com.google.android.feedback
+com.google.android.videos              # Google Play Movies & TV (loses access to purchases in it)
+com.google.android.play.games
+com.google.android.youtube.tvmusic     # YouTube Music
+com.hisense.hibrowser                  # Hisense browser
+com.google.android.apps.nbu.smartconnect.tv
+
+# Google TV setup wizard: its RecoveryActivity claims HOME once launcherx is disabled. It owned the
+# saved 2.4 GHz network here (not the connected 5 GHz one); owner chose to let that network be deleted.
+# Needs FORCE_SETUPWRAITH=1 to pass disable.sh's Wi-Fi guard. Re-enable before a factory reset.
+com.google.android.tungsten.setupwraith
+
+# Ambient screensaver; the launcher's Clock (com.gathin.tvhome/.ClockDream) is set as screensaver first
+com.google.android.apps.tv.dreamx

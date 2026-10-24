@@ -1,0 +1,11 @@
+{
+  "hidden_apps": ["com.mediatek.wwtv.tvcenter"],
+  "live_tv_package": "com.mediatek.wwtv.tvcenter",
+  "settings_key_keycodes": [83],
+  "app_keys": [
+    "293:com.google.android.youtube.tv",
+    "295:com.amazon.amazonvideo.livingroom",
+    "scan:484:in.startv.hotstar",
+    "scan:606:com.sonyliv"
+  ]
+}
